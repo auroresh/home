@@ -1,8 +1,12 @@
 net-links {
     & nav-button { 
         & a {
-            font-family: "IBM Plex Sans", sans-serif;
-            font-size: 1em;
+            font-family: "Cormorant Garamond", serif;
+            font-weight: 500;
+            font-size: 1.1em;
+            text-decoration: underline;
+            text-decoration-thickness: 0.05em;
+            text-underline-offset: 0.2em;
         }
     }
 }
