@@ -1,0 +1,192 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --wall-pattern-width: 4.2vw;
+}
+
+html {
+  background-color: light-dark(
+    var(--dark-background),
+    var(--light-background)
+  );
+}
+
+html::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background-image: url("../assets/diamonds.svg");
+  background-size: 2px;
+  background-repeat: repeat;
+
+  pointer-events: none;
+  z-index: -1;
+  filter: invert(1);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0;
+  padding: 0;
+  background-color: light-dark(var(--light-background), var(--dark-background));
+}
+
+@media (prefers-color-scheme: dark) {
+  .wall,
+  .wall-pattern::before,
+  .wall-pattern::after {
+    filter: invert(1);
+  }
+
+  html::after {
+    filter: invert(0);
+  }
+}
+
+.wall,
+.wall-pattern,
+.wall-border {
+  display: block;
+  flex: 0 0 auto;
+  align-self: flex-start;
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  background-repeat: repeat-y;
+  background-position: center top;
+  pointer-events: none;
+  user-select: none;
+
+  &.right-flip {
+    transform: scaleX(-1);
+  }
+}
+
+.wall-border {
+  width: calc(var(--wall-pattern-width) / 7);
+  background-color: light-dark(var(--dark-background), var(--light-background));
+}
+
+.wall {
+  width: var(--wall-pattern-width);
+  margin: 0 calc(var(--wall-pattern-width) / 10.5);
+  background-color: light-dark(var(--dark), var(--light));
+  background-image: url("../assets/wall.svg");
+  background-size: 100% auto;
+}
+
+.main-column {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding-left: 2svw;
+  padding-right: 2svw;
+  min-height: 100svh;
+}
+
+.wall-pattern {
+  /* wall-pattern-width is about 80px~ which is the base "black" around the
+    spider-y pattern. the real wall pattern width is 20px base */
+  --pattern-base: calc(var(--wall-pattern-width) / 4);
+
+  /* number of crescent columns before we hit the shrinking edge */
+  --cols: 3;
+
+  /* the tile size (60px) of the crescents */
+  --tile: calc(var(--pattern-base) * 3);
+
+  /* total repeating size */
+  --pattern: calc(var(--tile) * var(--cols));
+
+  /* the full duration of one vertical scroll loop */
+  --scroll-duration: 12s;
+
+  width: calc(var(--pattern) + var(--pattern-base) * 5);
+  overflow: hidden;
+}
+
+.wall-pattern::before,
+.wall-pattern::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  /* we need to be one tile taller else the loop may show a gap */
+  height: calc(100% + var(--tile) * 5);
+  animation: wall-scroll var(--scroll-duration) linear infinite;
+  will-change: transform;
+}
+
+/* full diamond and crescents pattern */
+.wall-pattern::before {
+  width: var(--pattern);
+
+  background-image:
+    url("../assets/full-diamond.svg"), url("../assets/crescent-diamond.svg");
+
+  background-size: var(--tile) var(--tile);
+  background-position:
+    calc(var(--pattern-base) * -1) 0,
+    0 var(--pattern-base);
+
+  background-repeat: repeat;
+}
+
+/* shrinking edge */
+.wall-pattern::after {
+  width: 100%;
+
+  background-image:
+    url("../assets/shrinking-edge.svg"), url("../assets/shrinking-edge.svg");
+
+  background-size: calc(var(--pattern-base) * 5) var(--tile);
+  background-position:
+    calc(var(--pattern) - var(--pattern-base)) 0,
+    var(--pattern) calc(var(--pattern-base) * 1.5);
+
+  background-repeat: repeat-y;
+}
+
+@keyframes wall-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, calc(var(--tile) * -1), 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wall-pattern::before,
+  .wall-pattern::after {
+    animation: none;
+  }
+}
+
+@media (width < 1100px) {
+  .wall-pattern {
+    --cols: 2;
+  }
+}
+
+@media (width < 900px) {
+  .wall-pattern {
+    --cols: 1;
+  }
+}
+
+@media (width < 700px) {
+  .wall-pattern {
+    --cols: 0;
+    width: calc(var(--pattern-base) * 6);
+  }
+}

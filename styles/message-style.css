@@ -1,0 +1,117 @@
+messages {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+message {
+  display: flex;
+  flex-direction: column;
+  padding: 1em 1em;
+  padding-bottom: 0.5em;
+  background-color: light-dark(var(--light-background), var(--dark-background));
+  border: 0.1em solid light-dark(var(--dark-background), var(--light-background));
+  border-radius: 0 1.25em 0 1.25em;
+}
+
+message-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.2em 1em;
+  padding-bottom: 0.6em;
+  border-bottom: 0.1em solid
+    light-dark(var(--dark-background), var(--light-background));
+}
+
+message-who {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 0.4em;
+  min-width: 0;
+}
+
+.message-name {
+  position: relative;
+  padding-left: 1.2em;
+  overflow-wrap: anywhere;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 1em;
+    aspect-ratio: 1;
+    transform: translateY(-45%);
+    background: url("../assets/diamonds.svg") center / contain no-repeat;
+  }
+}
+
+message-who:has(.message-site) .message-name::after {
+  content: "◈";
+  padding-left: 0.6em;
+}
+
+.message-site {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.1em;
+  font-weight: 500;
+  color: inherit;
+  overflow-wrap: anywhere;
+  text-decoration-thickness: 0.05em;
+  text-underline-offset: 0.2em;
+  padding: 0 0.2em;
+  transition:
+    color 0.1s ease-in-out,
+    background-color 0.1s ease-in-out;
+
+  &:hover,
+  &:focus-visible {
+    color: light-dark(var(--light-background), var(--dark-background));
+    background-color: light-dark(
+      var(--dark-background),
+      var(--light-background)
+    );
+  }
+
+  &:focus-visible {
+    outline: 3px solid light-dark(var(--dark-background), var(--light-background));
+    outline-offset: 3px;
+  }
+}
+
+.message-time {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-size: 1.1em;
+  white-space: nowrap;
+}
+
+.message-body {
+  display: block;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+@media (prefers-color-scheme: dark) {
+  .message-name::before {
+    filter: invert(1);
+  }
+}
+
+@media (width < 40rem) {
+    .message-time {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  message,
+  .message-site {
+    transition: none;
+  }
+}

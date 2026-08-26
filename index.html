@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>aurore — home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="assets/fonts/Cormorant_Garamond/font.css" />
+    <link rel="stylesheet" href="assets/fonts/Young_Serif/font.css" />
+    <link rel="stylesheet" href="assets/fonts/IBM_Plex_Sans/font.css" />
+
+    <!-- Theme colours -->
+    <link rel="stylesheet" href="styles/theme.css" />
+
+    <!-- Main column layout format with wall -->
+    <link rel="stylesheet" href="styles/layout.css" />
+
+    <!-- Main stylesheet for index page -->
+    <link rel="stylesheet" href="styles/index.css" />
+  </head>
+  <body>
+    <!-- Decorative border banner -->
+    <!-- Wall is the outmost layer -->
+    <div class="wall-border" aria-hidden="true"></div>
+    <div class="wall" aria-hidden="true"></div>
+    <div class="wall-border" aria-hidden="true"></div>
+
+    <!-- This is the actual pattern that scrolls -->
+    <div class="wall-pattern" aria-hidden="true"></div>
+
+    <!-- Main page content -->
+    <main class="main-column">
+      <h1 class="aurora">
+        <img src="assets/aurora.svg" alt="Aurora" />
+      </h1>
+      <selector-frame aria-hidden="true">
+        <nav class="selector" aria-label="Main">
+          <a class="selector-box" href="about.html">
+            <span class="selector-info">
+              <span class="selector-issue">I</span>
+              <span class="selector-title">about</span>
+            </span>
+            <span class="selector-suite">
+              <img
+                src="assets/clubs.svg"
+                alt="The clubs card, for the about option"
+              />
+            </span>
+          </a>
+          <a class="selector-box" href="notes.html">
+            <span class="selector-info">
+              <span class="selector-issue">II</span>
+              <span class="selector-title">notes</span>
+            </span>
+            <span class="selector-suite right-transition">
+              <img
+                class="diamonds"
+                src="assets/diamonds.svg"
+                alt="The diamonds card, for the notes option"
+              />
+            </span>
+          </a>
+          <a class="selector-box" href="contact.html">
+            <span class="selector-info">
+              <span class="selector-title">contact</span>
+              <span class="selector-issue">III</span>
+            </span>
+            <span class="selector-suite">
+              <img
+                src="assets/hearts.svg"
+                alt="The hearts card, for the contact option"
+              />
+            </span>
+          </a>
+          <a class="selector-box" href="net.html">
+            <span class="selector-info">
+              <span class="selector-title">net</span>
+              <span class="selector-issue">IV</span>
+            </span>
+            <span class="selector-suite right-transition">
+              <img
+                src="assets/spades.svg"
+                alt="The spades card, for the net option"
+              />
+            </span>
+          </a>
+        </nav>
+      </selector-frame>
+    </main>
+
+    <!-- The right side wall/pattern blehh -->
+    <div class="wall-pattern right-flip" aria-hidden="true"></div>
+    <div class="wall-border" aria-hidden="true"></div>
+    <div class="wall" aria-hidden="true"></div>
+    <div class="wall-border" aria-hidden="true"></div>
+  </body>
+</html>

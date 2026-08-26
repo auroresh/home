@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>aurore — contact</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="assets/fonts/Cormorant_Garamond/font.css" />
+    <link rel="stylesheet" href="assets/fonts/Young_Serif/font.css" />
+    <link rel="stylesheet" href="assets/fonts/IBM_Plex_Sans/font.css" />
+
+    <!-- Theme colours -->
+    <link rel="stylesheet" href="styles/theme.css" />
+
+    <!-- Main column layout format with wall -->
+    <link rel="stylesheet" href="styles/layout.css" />
+    <link rel="stylesheet" href="styles/nav.css" />
+    <link rel="stylesheet" href="styles/text-style.css" />
+    <link rel="stylesheet" href="styles/form-style.css" />
+    <link rel="stylesheet" href="styles/message-style.css" />
+  </head>
+  <body>
+    <!-- Decorative border banner -->
+    <!-- Wall is the outmost layer -->
+    <div class="wall-border" aria-hidden="true"></div>
+    <div class="wall" aria-hidden="true"></div>
+    <div class="wall-border" aria-hidden="true"></div>
+
+    <!-- This is the actual pattern that scrolls -->
+    <div class="wall-pattern" aria-hidden="true"></div>
+
+    <!-- Main page content -->
+    <main class="main-column">
+      <header>
+        <nav aria-label="Main">
+          <left-nav aria-hidden="true">
+            <a class="nav-home" href="index.html">
+              <img src="assets/aurora.svg" alt="Aurora" />
+            </a>
+          </left-nav>
+          <right-nav>
+            <nav-button>
+              <a href="about.html">
+                about<header-suite aria-hidden="true"
+                  ><img src="assets/clubs.svg" alt="The clubs card suit"
+                /></header-suite>
+              </a>
+            </nav-button>
+            <nav-button>
+              <a href="notes.html" aria-current="page">
+                notes<header-suite aria-hidden="true"
+                  ><img
+                    class="diamonds"
+                    src="assets/diamonds.svg"
+                    alt="The diamonds card suite"
+                /></header-suite>
+              </a>
+            </nav-button>
+            <nav-button>
+              <a href="contact.html">
+                contact<header-suite aria-hidden="true"
+                  ><img src="assets/hearts.svg" alt="The hearts card suite"
+                /></header-suite>
+              </a>
+            </nav-button>
+            <nav-button>
+              <a href="net.html">
+                net<header-suite aria-hidden="true"
+                  ><img src="assets/spades.svg" alt="The spades card suite"
+                /></header-suite>
+              </a>
+            </nav-button>
+          </right-nav>
+        </nav>
+      </header>
+      <section>
+        <h1 class="title">
+          <title-left> Notes </title-left>
+          <img
+            class="title-suit"
+            src="assets/diamonds.svg"
+            alt="The diamonds card suit"
+          />
+        </h1>
+        Leave a note before you go! Every message is reviewed before being put
+        up, so it may take some time. Contact me if you want to speed things up
+        :)
+        <form
+          id="guestbook-form"
+          action="https://aurore.sudlicht.com/sign"
+          method="post"
+        >
+          <label for="guestbook-name"><serif>Your Name:</serif></label>
+          <input
+            id="guestbook-name"
+            name="name"
+            maxlength="40"
+            placeholder="your name"
+            required
+          />
+
+          <label for="guestbook-website"
+            ><serif>Your Website (Optional):</serif></label
+          >
+          <input
+            id="guestbook-website"
+            name="website"
+            maxlength="60"
+            placeholder="me.com"
+            autocomplete="off"
+          />
+
+          <input
+            class="honey"
+            id="guestbook-important"
+            name="honey"
+            maxlength="67"
+            placeholder="this is a honey container!"
+            autocomplete="off"
+            tabindex="-1"
+            aria-hidden="true"
+          />
+
+          <label for="guestbook-message"><serif>Your Message:</serif></label>
+          <textarea
+            id="guestbook-message"
+            name="message"
+            maxlength="500"
+            placeholder="leave a message!"
+            required
+          ></textarea>
+
+          <buttons>
+            <button type="submit">send</button>
+            <button type="reset">clear</button>
+          </buttons>
+        </form>
+      </section>
+      <section>
+        <h2>Messages</h2>
+        <messages role="list">
+          
+    <message role="listitem">
+    <message-head>
+        <message-who>
+        <serif class="message-name">fanibus</serif>
+        
+        </message-who>
+        <time class="message-time" datetime="2026-08-26T08:50:36.594938+00:00"
+        >26 aug 2026 ⬩ 18:04</time
+        >
+    </message-head>
+    <p class="message-body">nya~! :3</p>
+    </message>
+    
+
+    <message role="listitem">
+    <message-head>
+        <message-who>
+        <serif class="message-name">aurore</serif>
+        
+            <a
+                class="message-site"
+                href="https://aurore.sh"
+                rel="ugc nofollow noopener"
+                target="_blank"
+                >aurore.sh</a
+            >
+            
+        </message-who>
+        <time class="message-time" datetime="2026-08-26T08:50:36.594982+00:00"
+        >26 aug 2026 ⬩ 12:42</time
+        >
+    </message-head>
+    <p class="message-body">hii everyone! please leave a message :)</p>
+    </message>
+    
+
+        </messages>
+      </section>
+      <footer>
+        <serif> made by aurore </serif>
+        <footer-sparkles>· ˙ ◈ ◇ ◆◆ ◇ ◈ ˙ ·</footer-sparkles>
+        <nav-button>
+          <a href="#top">
+            <serif> jump to top </serif>
+          </a>
+        </nav-button>
+      </footer>
+    </main>
+
+    <!-- The right side wall/pattern blehh -->
+    <div class="wall-pattern right-flip" aria-hidden="true"></div>
+    <div class="wall-border" aria-hidden="true"></div>
+    <div class="wall" aria-hidden="true"></div>
+    <div class="wall-border" aria-hidden="true"></div>
+  </body>
+</html>

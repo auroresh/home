@@ -1,0 +1,324 @@
+.main-column {
+  padding-top: 6svh;
+  padding-bottom: 6svh;
+  gap: 6svh;
+}
+
+.aurora {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  flex: 0 0 auto;
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+
+  & img {
+    height: auto;
+    width: min(30vh, max(15vw, 200px));
+    max-width: 100%;
+    font-size: 36px;
+    font-family: "Young Serif", serif;
+    text-align: center;
+  }
+}
+
+selector-frame {
+  flex: 1 1 auto;
+}
+
+.selector {
+  min-height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 3vh;
+}
+
+.selector-box {
+  display: flex;
+  aspect-ratio: 1;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 2vh;
+  min-width: 0;
+  min-height: 0;
+  border: 0.25svw solid;
+  border-color: light-dark(var(--dark-background), var(--light-background));
+  background-color: light-dark(var(--light-background), var(--dark-background));
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  container-type: size;
+  overflow: hidden;
+
+  z-index: 1;
+  transition: transform 0.3s;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.selector-box:focus-visible {
+  outline: 3px solid light-dark(var(--dark-background), var(--light-background));
+  outline-offset: 3px;
+}
+
+.selector-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.015;
+}
+
+.selector-info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* top left */
+.selector-box:nth-child(1) {
+  align-items: start;
+  justify-content: start;
+  justify-self: end;
+  align-self: end;
+  border-top-left-radius: 3svh;
+
+  & .selector-suite {
+    top: 30%;
+    bottom: 10%;
+    left: 30%;
+    right: 10%;
+  }
+
+  &::before {
+    background: url("../assets/noise-clubs.svg") right / contain no-repeat;
+  }
+}
+
+/* top right */
+.selector-box:nth-child(2) {
+  align-items: start;
+  justify-content: end;
+  justify-self: start;
+  align-self: end;
+  border-top-right-radius: 3svh;
+
+  & .selector-info {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }
+
+  & .selector-suite {
+    top: 30%;
+    bottom: 10%;
+    left: 10%;
+    right: 30%;
+  }
+
+  &::before {
+    background: url("../assets/noise-diamonds.svg") left / contain no-repeat;
+  }
+}
+
+/* bottom left */
+.selector-box:nth-child(3) {
+  align-items: end;
+  justify-content: start;
+  justify-self: end;
+  align-self: start;
+  border-bottom-left-radius: 3svh;
+
+  & .selector-suite {
+    top: 10%;
+    bottom: 30%;
+    left: 30%;
+    right: 10%;
+  }
+
+  &::before {
+    background: url("../assets/noise-hearts.svg") right / contain no-repeat;
+  }
+}
+
+/* bottom right */
+.selector-box:nth-child(4) {
+  align-items: end;
+  justify-content: end;
+  justify-self: start;
+  align-self: start;
+  border-bottom-right-radius: 3svh;
+
+  & .selector-info {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }
+
+  & .selector-suite {
+    top: 10%;
+    bottom: 30%;
+    left: 10%;
+    right: 30%;
+  }
+
+  &::before {
+    background: url("../assets/noise-spades.svg") left / contain no-repeat;
+  }
+}
+
+.selector-title {
+  font-family: "Young Serif", serif;
+  font-size: 12cqh;
+  padding: 0 3cqh;
+  transition: all 0.1s;
+  transition-timing-function: ease-in-out;
+}
+
+.selector-issue {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 12cqh;
+  padding: 0 3cqh;
+}
+
+.selector-suite {
+  font-family: "Cormorant Garamond", serif;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7cqh;
+  text-align: center;
+  & img {
+    height: 44cqh;
+  }
+
+  & img.diamonds {
+    height: 58cqh;
+  }
+
+  transition: all 0.3s;
+  transition-timing-function: ease-in-out;
+}
+
+.selector-info {
+  position: relative;
+}
+
+.selector-box:hover {
+  transform: scale(1.1);
+
+  & .selector-suite {
+    transform: rotate(-15deg) scale(1.2);
+  }
+
+  & .selector-suite.right-transition {
+    transform: rotate(15deg) scale(1.2);
+  }
+}
+
+.selector-box:hover, .selector-box:focus-visible {
+  & .selector-title {
+    color: light-dark(var(--light-background), var(--dark-background));
+    background-color: light-dark(
+      var(--dark-background),
+      var(--light-background)
+    );
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .aurora img,
+  .selector-suite img {
+    filter: invert(1);
+  }
+
+  .selector-box::before {
+    opacity: 0.02;
+    filter: invert(1);
+  }
+}
+
+@media (aspect-ratio < 1) {
+  .selector {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(4, minmax(130px, 1fr));
+  }
+
+  .selector-box {
+    aspect-ratio: auto;
+    width: 100%;
+    justify-self: stretch;
+    align-self: stretch;
+    align-items: center;
+    justify-content: start;
+    border: 0.4svh solid;
+  }
+
+  .selector-box:nth-child(n),
+  .selector-box:nth-child(n) .selector-info {
+    align-items: start;
+    justify-content: start;
+  }
+
+  .selector-box:nth-child(n) {
+    align-items: center;
+    border-radius: 0 3cqh 0 3cqh;
+    justify-content: space-between;
+
+    & .selector-suite {
+      position: unset;
+    }
+
+    &::before {
+      background:
+        url("../assets/noise-spades.svg") left / contain no-repeat,
+        url("../assets/noise-hearts.svg") right / contain no-repeat,
+        url("../assets/noise-diamonds.svg") left / contain no-repeat,
+        url("../assets/noise-clubs.svg") right / contain no-repeat;
+    }
+  }
+
+  .selector-box:nth-child(1),
+  .selector-box:nth-child(2) {
+    & .selector-info {
+      flex-direction: column-reverse;
+    }
+  }
+
+  .selector-issue,
+  .selector-title {
+    font-size: 24cqh;
+  }
+
+  .selector-suite {
+    font-size: 14cqh;
+  }
+  .selector-suite img {
+    height: 75cqh;
+  }
+
+  .selector-suite img.diamonds {
+    height: 90cqh;
+    aspect-ratio: 1;
+    margin-right: -22.5%;
+  }
+
+  .selector-box::before {
+    opacity: 0.02;
+  }
+}
+
+@media (prefers-color-scheme: dark) and (aspect-ratio < 1) {
+  .selector-box::before {
+    opacity: 0.03;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .selector-box, .selector-title, .selector-suite, .selector-box:hover {
+    transition: none;
+    transform: none;
+  }
+}

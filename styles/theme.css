@@ -1,0 +1,7 @@
+:root {
+    color-scheme: light dark;
+    --dark-background: #151515;
+    --light-background: #fefefe;
+    --dark: #000000;
+    --light: #ffffff;
+}
